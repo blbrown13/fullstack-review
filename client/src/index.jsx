@@ -4,12 +4,7 @@ import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
 
-// require json file
 var json = require('../../data.json');
-// import example data set of repos
-  // map imported example data
-  // render in client
-
 
 class App extends React.Component {
   constructor(props) {
@@ -17,20 +12,11 @@ class App extends React.Component {
     this.state = {
       repos: json
     }
-    console.log('#APP has started...');
-    // fs.readFile();
-    // var repoData = JSON.stringify(json[0]);
-    var repoData = json[0];
-    var strOne = `name: ${repoData.name} full_name: ${repoData.full_name} \nurl:${repoData.url}`;
-    var strTwo = `description: ${repoData.description}`;
-    console.log(`${strOne}\n${strTwo}`);
-    // console.log(JSON.stringify(json));
+    this.search = this.search.bind(this)
   }
 
   search (term) {
     console.log(`${term} was searched`);
-    // repos.length++;
-    // TODO
     $.ajax({
       type: "POST",
       url: "http://127.0.0.1:1128/repos/import",
@@ -52,7 +38,7 @@ class App extends React.Component {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <Search onSearch={this.search}/>
     </div>)
   }
 }
