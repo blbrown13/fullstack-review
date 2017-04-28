@@ -19,7 +19,6 @@ app.post('/repos/import', function (req, res) {
   var username = req.body.term;
 
   console.log('req.data: ', username);
-  console.log("chasin' dat mongoose");
 
   updateDatabase(username);
   locateRecord(username, res);
@@ -48,10 +47,12 @@ var locateRecord = function(username, res) {
 
 app.get('/repos', function (req, res) {
   res.send('inside repos');
+  ReposDB.find();
 });
 
 app.get('/repos/import', function (req, res) {
   res.send('inside repos/import');
+  ReposDB.find();
 });
 
 var port = 1128;

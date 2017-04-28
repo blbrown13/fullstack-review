@@ -13,10 +13,6 @@ class App extends React.Component {
       repos: exampleData
     }
     this.search = this.search.bind(this)
-
-    // json.forEach(function(repo){
-    //   console.log(repo);
-    // });
   }
 
   search (term) {
@@ -25,11 +21,8 @@ class App extends React.Component {
       type: "POST",
       url: "http://127.0.0.1:1128/repos/import",
       data: { term: term },
-      // dataType : "text",
-      // contentType: "application/json; charset=utf-8",
       success : (result) => {
-        // alert(result);
-        console.log('success yo');
+        console.log('successful post request to server');
         this.setState({
           repos: result
         })

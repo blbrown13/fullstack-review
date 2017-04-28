@@ -19,7 +19,6 @@ json.forEach(function(repo){
     description: repo.description
   });
 
-
   json.forEach(function(repo){
     console.log(repo);
   });
